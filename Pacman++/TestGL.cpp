@@ -8,7 +8,7 @@ void display()
 	glutSolidSphere(0.5, 45, 15);
 	glFlush();
 }
-int main(int argc, char **argv)
+void testGl(int argc, char **argv)
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
@@ -21,4 +21,5 @@ int main(int argc, char **argv)
 	glOrtho(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
 	glutDisplayFunc(display);
 	glutMainLoop();
+
 }
