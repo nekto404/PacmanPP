@@ -1,4 +1,4 @@
-#include "dataConvector.h"
+#include "DataConvector.h"
 
 int const ASCII_DIFFERENCE = 48;
 int const DECIMAL_CONST = 10;

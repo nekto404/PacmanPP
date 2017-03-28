@@ -110,14 +110,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Coin.cpp" />
     <ClCompile Include="DataConvector.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Exit.cpp" />
+    <ClCompile Include="GameController.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="PacMan.cpp" />
     <ClCompile Include="TestGL.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="dataConvector.h" />
-    <ClInclude Include="map.h" />
+    <ClInclude Include="Coin.h" />
+    <ClInclude Include="DataConvector.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Exit.h" />
+    <ClInclude Include="GameController.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="PacMan.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -7,7 +7,6 @@ using namespace std;
 
 int const STRING_WITH_NUMBER_LENGHT = 20;
 
-
 Map::Map(){}
 
 void Map::readMap(string levelName)
