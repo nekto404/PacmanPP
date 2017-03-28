@@ -1,13 +1,13 @@
 #include "GameController.h"
+#include "Enemy.h"
+#include "PacMan.h"
+#include "Exit.h"
+#include "Coin.h"
 
 using namespace std;
 
 GameController::GameController()
 {
-	source = 0;
+	score = 0;
 }
 
-void GameController::initGameObject()
-{
-
-}

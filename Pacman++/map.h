@@ -4,7 +4,9 @@ class Map {
 public:
 	Map();
 	void readMap(string lavelName);
-	void initMap(int gameObjects[][3], int count);
+	void initMap();
+	int objectCount = 0;
+	int initObject[600];
 
 private:
 	int size;

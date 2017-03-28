@@ -3,5 +3,7 @@
 
 class Enemy : public GameObject
 {
+public:
+	Enemy();
 	Enemy(int x, int y);
 };

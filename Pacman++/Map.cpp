@@ -27,19 +27,18 @@ void Map::readMap(string levelName)
 		cout << size << endl;
 	}
 
-void Map::initMap(int gameObjects[][3],int counter)
+void Map::initMap()
 {
-	counter = 0;
+	objectCount = 0;
 	for (int i = 0; i < size; i++)
 		for (int j = 0; j < size; j++)
 			if (levelMap[i][j] != 1)
 			{
-				gameObjects[counter][0] = levelMap[i][j];
-				gameObjects[counter][1] = i;
-				gameObjects[counter][2] = j;
+				initObject[objectCount * 3] = levelMap[i][j];
+				initObject[objectCount * 3 + 1] = i;
+				initObject[objectCount * 3 + 2] = j;
 				levelMap[i][j] = 0;
-				counter++;
+				objectCount++;
 			}
-
 }
 
