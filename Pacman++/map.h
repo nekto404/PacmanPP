@@ -5,6 +5,7 @@ public:
 	Map();
 	void readMap(string lavelName);
 	void initMap();
+	void printMap();
 	int objectCount = 0;
 	int initObject[600];
 

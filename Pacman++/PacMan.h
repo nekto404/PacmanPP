@@ -6,4 +6,5 @@ class PacMan : public GameObject
 public:
 	PacMan();
 	PacMan(int x, int y);
+	void printPac();
 };

@@ -1,7 +1,9 @@
 #include <fstream>
 #include <iostream>
+#include <Windows.h>
 #include "map.h"
 #include "dataConvector.h"
+#include "PrintHelper.h"
 
 using namespace std;
 
@@ -20,12 +22,13 @@ void Map::readMap(string levelName)
 		{
 			fin.getline(buff, STRING_WITH_NUMBER_LENGHT);
 			charBuffToArray(buff, size, levelMap[i]);
-			cout << buff << endl;
+			//cout << buff << endl;
 			i++;
 		}
 		fin.close();
-		cout << size << endl;
+		//cout << size << endl;
 	}
+
 
 void Map::initMap()
 {
@@ -40,5 +43,22 @@ void Map::initMap()
 				levelMap[i][j] = 0;
 				objectCount++;
 			}
+}
+
+void Map::printMap()
+{
+	SetColor(15, 4);
+	for (int i=0; i<size; i++)
+		for (int j = 0; j < size; j++)
+		{
+			if (levelMap[i][j] == 1)
+			{
+				PlaceCursor(j*3, i*2);
+					cout << "   ";
+				PlaceCursor(j*3, i*2+1);
+					cout << "   ";
+			}
+		}
+	//cout << endl;
 }
 

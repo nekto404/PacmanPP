@@ -5,7 +5,7 @@ public:
 	GameObject();
 	GameObject(int x, int y);
 
-private:
+protected:
 	int cord_x;
 	int cord_y;
 	bool exist;

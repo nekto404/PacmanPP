@@ -45,6 +45,9 @@
     <ClCompile Include="Exit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PrintHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameController.h">
@@ -69,6 +72,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Exit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PrintHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
