@@ -1,3 +1,4 @@
+#include <iostream>
 #include "GameController.h"
 #include "Enemy.h"
 #include "PacMan.h"
@@ -23,9 +24,14 @@ int GameController::getScore()
 	return score;
 }
 
-void GameController::checkCollisionWithCoins(Coin coins[], int coins_counter, PacMan player)
+bool GameController::gameState()
 {
-	for (int i = 0; i < coins_counter; i++)
+	return game;
+}
+
+void GameController::checkCollisionWithCoins(Coin coins[], int coins_count, PacMan player)
+{
+	for (int i = 0; i < coins_count; i++)
 		if ((coins[i].getX() == (player.getX())) && (coins[i].getY() == player.getY()) && (coins[i].getExist()))
 		{
 			score++;
@@ -33,9 +39,9 @@ void GameController::checkCollisionWithCoins(Coin coins[], int coins_counter, Pa
 		}
 }
 
-void GameController::checkCollisionWithEnemis(Enemy enemies[], int enemies_counter, PacMan player)
+void GameController::checkCollisionWithEnemis(Enemy enemies[], int enemies_count, PacMan player)
 {
-	for (int i = 0; i < enemies_counter; i++)
+	for (int i = 0; i < enemies_count; i++)
 		if ((enemies[i].getX() == (player.getX())) && (enemies[i].getY() == player.getY()))
 		{
 			game = false;
@@ -51,4 +57,10 @@ void GameController::checkCollisionWithExit(Exit levelExit, PacMan player)
 			game = false;
 		}
 	}
+}
+
+void GameController::printScore() {
+	setColor(4, 6);
+	placeCursor(60, 2);
+	std::cout << "Score: "<< score <<"00";
 }

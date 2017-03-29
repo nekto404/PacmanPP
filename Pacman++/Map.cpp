@@ -45,15 +45,15 @@ void Map::initMap()
 
 void Map::printMap()
 {
-	SetColor(15, 4);
+	setColor(15, 4);
 	for (int i=0; i<size; i++)
 		for (int j = 0; j < size; j++)
 		{
 			if (levelMap[i][j] == 1)
 			{
-				PlaceCursor(j*3, i*2);
+				placeCursor(j*3, i*2);
 					cout << "   ";
-				PlaceCursor(j*3, i*2+1);
+				placeCursor(j*3, i*2+1);
 					cout << "   ";
 			}
 		}
@@ -61,14 +61,14 @@ void Map::printMap()
 
 void Map::cleanMap()
 {
-	SetColor(0, 0);
+	setColor(0, 0);
 	for (int i = 0; i<size; i++)
 		for (int j = 0; j < size; j++)
 			if (levelMap[i][j] == 0)
 			{
-				PlaceCursor(j * 3, i * 2);
+				placeCursor(j * 3, i * 2);
 				cout << "   ";
-				PlaceCursor(j * 3, i * 2 + 1);
+				placeCursor(j * 3, i * 2 + 1);
 				cout << "   ";
 			}
 }

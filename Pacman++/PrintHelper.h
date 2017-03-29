@@ -1,4 +1,6 @@
 #pragma once
 
-void PlaceCursor(const int x, const int y);
-void SetColor(const int foreground, const int background);
+void placeCursor(const int x, const int y);
+void setColor(const int foreground, const int background);
+void cleanScreen();
+void printGameOver(int score);

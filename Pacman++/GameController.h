@@ -10,9 +10,11 @@ public:
 	GameController();
 	void startGame();
 	int getScore();
-	void checkCollisionWithCoins(Coin coins[], int coins_counter, PacMan player);
+	bool gameState();
+	void checkCollisionWithCoins(Coin coins[], int coins_count, PacMan player);
 	void checkCollisionWithExit(Exit levelExit, PacMan player);
-	void checkCollisionWithEnemis(Enemy enemies[], int enemies_counte, PacMan player);
+	void checkCollisionWithEnemis(Enemy enemies[], int enemies_count, PacMan player);
+	void printScore();
 private:
 	bool game;
 	int score;

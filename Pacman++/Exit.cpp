@@ -20,19 +20,19 @@ bool Exit::getClosed()
 }
 void Exit::printExit()
 {
-	SetColor(1, 10);
+	setColor(1, 10);
 	if (closed)
 	{
-		PlaceCursor(cord_y * 3, cord_x * 2);
+		placeCursor(cord_y * 3, cord_x * 2);
 		cout << "###";
-		PlaceCursor(cord_y * 3, cord_x * 2 + 1);
+		placeCursor(cord_y * 3, cord_x * 2 + 1);
 		cout << "###";
 	}
 	else
 	{
-		PlaceCursor(cord_y * 3, cord_x * 2);
+		placeCursor(cord_y * 3, cord_x * 2);
 		cout << "   ";
-		PlaceCursor(cord_y * 3, cord_x * 2 + 1);
+		placeCursor(cord_y * 3, cord_x * 2 + 1);
 		cout << "   ";
 	}
 }

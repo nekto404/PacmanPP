@@ -7,7 +7,7 @@
 #include "map.h";
 #include "GameController.h"
 #include <windows.h>
-
+#include "PrintHelper.h"
 using namespace std;
  
 PacMan player;
@@ -51,11 +51,8 @@ int main(int argc, char **argv)
 	initGameObject(levelMap.initObject, levelMap.objectCount);
 	levelMap.printMap();
 	GameController gameController;
-	while (true) {
-		gameController.checkCollisionWithCoins(coins,coins_count,player);
-		gameController.checkCollisionWithExit(exitInGame, player);
-		gameController.checkCollisionWithEnemis(enemies, enemies_count,player);
-		exitInGame.checkCoins(coins_count, gameController.getScore());
+	while (gameController.gameState()) {
+		
 		if (GetAsyncKeyState(VK_UP)) {
 			player.goSomewhere(levelMap, 1);
 		}
@@ -75,13 +72,23 @@ int main(int argc, char **argv)
 		{
 			coins[i].printCoin();
 		}
+		gameController.checkCollisionWithEnemis(enemies, enemies_count, player);
 		for (int i = 0; i < enemies_count; i++)
 		{
 			enemies[i].move(levelMap);
 			enemies[i].printEnemy();
 		}
 		player.printPac();
+		gameController.checkCollisionWithCoins(coins, coins_count, player);
+		gameController.printScore();
+		gameController.checkCollisionWithExit(exitInGame, player);
+		gameController.checkCollisionWithEnemis(enemies, enemies_count, player);
+		exitInGame.checkCoins(coins_count, gameController.getScore());
+		if (!(gameController.gameState())) cleanScreen();
 		Sleep(250);
 	}
+	
+	printGameOver(gameController.getScore());
+	Sleep(2000);
 	return 0;
 }

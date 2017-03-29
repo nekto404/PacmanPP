@@ -9,10 +9,10 @@ Enemy::Enemy() : GameObject::GameObject(){}
 Enemy::Enemy(int x, int y) : GameObject::GameObject(x, y) {}
 void Enemy::printEnemy()
 {
-	SetColor(0, 3);
-	PlaceCursor(cord_y * 3, cord_x * 2);
+	setColor(0, 3);
+	placeCursor(cord_y * 3, cord_x * 2);
 	cout << "o o";
-	PlaceCursor(cord_y * 3, cord_x * 2 + 1);
+	placeCursor(cord_y * 3, cord_x * 2 + 1);
 	cout << " 0 ";
 }
 
