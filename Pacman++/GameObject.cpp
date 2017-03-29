@@ -12,4 +12,19 @@ GameObject::GameObject(int x , int y)
 	cord_x = x;
 	cord_y = y;
 }
-
+int GameObject::getX()
+{
+	return cord_x;
+}
+int GameObject::getY()
+{
+	return cord_y;
+}
+bool GameObject::getExist()
+{
+	return exist;
+}
+void GameObject::hideGameObject()
+{
+	exist = false;
+}

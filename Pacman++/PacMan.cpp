@@ -14,3 +14,27 @@ void PacMan::printPac() {
 	PlaceCursor(cord_y * 3, cord_x * 2 + 1);
 	cout << " ~ ";
 }
+
+void PacMan::goSomewhere(Map level , char direction) {
+	switch (direction)
+	{
+	case 1 :
+		if (level.isEmptyBlock(cord_x - 1,cord_y))
+		cord_x--;
+		break;
+	case 2 :
+		if (level.isEmptyBlock(cord_x + 1, cord_y))
+		cord_x++;
+		break;
+	case 3 :
+		if (level.isEmptyBlock(cord_x, cord_y - 1))
+		cord_y--;
+		break;
+	case 4:
+		if (level.isEmptyBlock(cord_x, cord_y + 1))
+		cord_y++;
+		break;
+	default:
+		break;
+	}
+}

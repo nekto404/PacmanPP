@@ -1,13 +1,14 @@
 #pragma once
-using namespace std;
 class Map {
 public:
-	Map();
-	void readMap(string lavelName);
-	void initMap();
-	void printMap();
 	int objectCount = 0;
 	int initObject[600];
+	Map();
+	void readMap(char * lavelName);
+	void initMap();
+	void printMap();
+	void cleanMap();
+	bool isEmptyBlock(int x, int y);
 
 private:
 	int size;

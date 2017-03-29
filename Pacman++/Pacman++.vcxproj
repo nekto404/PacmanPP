@@ -120,7 +120,6 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="PacMan.cpp" />
     <ClCompile Include="PrintHelper.cpp" />
-    <ClCompile Include="TestGL.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Coin.h" />

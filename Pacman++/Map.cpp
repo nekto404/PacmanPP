@@ -11,7 +11,7 @@ int const STRING_WITH_NUMBER_LENGHT = 20;
 
 Map::Map(){}
 
-void Map::readMap(string levelName)
+void Map::readMap(char* levelName)
 	{
 		char buff[STRING_WITH_NUMBER_LENGHT];
 		int i = 0;
@@ -22,11 +22,9 @@ void Map::readMap(string levelName)
 		{
 			fin.getline(buff, STRING_WITH_NUMBER_LENGHT);
 			charBuffToArray(buff, size, levelMap[i]);
-			//cout << buff << endl;
 			i++;
 		}
 		fin.close();
-		//cout << size << endl;
 	}
 
 
@@ -59,6 +57,26 @@ void Map::printMap()
 					cout << "   ";
 			}
 		}
-	//cout << endl;
 }
 
+void Map::cleanMap()
+{
+	SetColor(0, 0);
+	for (int i = 0; i<size; i++)
+		for (int j = 0; j < size; j++)
+			if (levelMap[i][j] == 0)
+			{
+				PlaceCursor(j * 3, i * 2);
+				cout << "   ";
+				PlaceCursor(j * 3, i * 2 + 1);
+				cout << "   ";
+			}
+}
+
+bool Map::isEmptyBlock(int x, int y)
+{
+	bool result = false;
+	if (levelMap[x][y] == 0)
+		result = true;
+	return result;
+}

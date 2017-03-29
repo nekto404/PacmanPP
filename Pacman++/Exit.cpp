@@ -13,6 +13,11 @@ Exit::Exit(int x, int y) : GameObject::GameObject(x, y)
 {
 	closed = true;
 }
+
+bool Exit::getClosed()
+{
+	return closed;
+}
 void Exit::printExit()
 {
 	SetColor(1, 10);
@@ -31,3 +36,12 @@ void Exit::printExit()
 		cout << "   ";
 	}
 }
+
+void Exit::checkCoins(int coints_counter, int score)
+{
+	if (coints_counter == score)
+	{
+		closed = false;
+	}
+}
+
