@@ -1,4 +1,6 @@
+//Ігровий контролер
 #include <iostream>
+
 #include "GameController.h"
 #include "Enemy.h"
 #include "PacMan.h"
@@ -6,7 +8,6 @@
 #include "Coin.h"
 #include "PrintHelper.h"
 
-using namespace std;
 
 GameController::GameController()
 {
@@ -29,6 +30,8 @@ bool GameController::gameState()
 	return game;
 }
 
+// Методи для перевірки колізії 
+// TODO: Змінити вхідні дані з масивів на посилання на масиви
 void GameController::checkCollisionWithCoins(Coin coins[], int coins_count, PacMan player)
 {
 	for (int i = 0; i < coins_count; i++)
@@ -59,6 +62,9 @@ void GameController::checkCollisionWithExit(Exit levelExit, PacMan player)
 	}
 }
 
+
+//Методи перевірки колізії
+//TODO: Повязати з розміром карти
 void GameController::printScore() {
 	setColor(4, 6);
 	placeCursor(60, 2);

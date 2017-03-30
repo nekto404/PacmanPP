@@ -1,14 +1,12 @@
-#include <fstream>
-#include <iostream>
+#include <windows.h>
 #include "Enemy.h"
 #include "PacMan.h"
 #include "Exit.h"
 #include "Coin.h"
 #include "map.h";
 #include "GameController.h"
-#include <windows.h>
+
 #include "PrintHelper.h"
-using namespace std;
  
 PacMan player;
 Coin coins[200];
@@ -16,9 +14,10 @@ Enemy enemies[4];
 Exit exitInGame;
 char enemies_count = 0;
 char coins_count = 0;
+Map levelMap;
+GameController gameController;
 
-int counter;
-
+// Ініціалізація ігрових обєктів
 void initGameObject(int * gameObject, int count) {
 	for (int i = 0; i < count; i++)
 	{
@@ -42,52 +41,53 @@ void initGameObject(int * gameObject, int count) {
 	}
 }
 
+// Метод що відповідає за логіку одного ігрового ходу
+void gameTick() {
+	levelMap.cleanMap();
+	exitInGame.printExit();
+	for (int i = 0; i < coins_count; i++)
+	{
+		coins[i].printCoin();
+	}
+	gameController.checkCollisionWithEnemis(enemies, enemies_count, player);
+	for (int i = 0; i < enemies_count; i++)
+	{
+		enemies[i].move(levelMap);
+		enemies[i].printEnemy();
+	}
+	player.printPac();
+	gameController.checkCollisionWithCoins(coins, coins_count, player);
+	gameController.printScore();
+	gameController.checkCollisionWithExit(exitInGame, player);
+	gameController.checkCollisionWithEnemis(enemies, enemies_count, player);
+	exitInGame.checkCoins(coins_count, gameController.getScore());
+	if (!(gameController.gameState())) cleanScreen();
+	Sleep(250);
+}
+
+// Метод що отримує данні про натиснені клавіші
+void playerInput() {
+	if (GetAsyncKeyState(VK_UP)) 
+		player.goSomewhere(levelMap, 1);
+	if (GetAsyncKeyState(VK_DOWN)) 
+		player.goSomewhere(levelMap, 2);
+	if (GetAsyncKeyState(VK_LEFT)) 
+		player.goSomewhere(levelMap, 3);
+	if (GetAsyncKeyState(VK_RIGHT)) 
+		player.goSomewhere(levelMap, 4);
+	if (GetAsyncKeyState(VK_ESCAPE)) exit(0); 
+}
 
 int main(int argc, char **argv)
 {
-	Map levelMap;
 	levelMap.readMap("level.txt");
 	levelMap.initMap();
 	initGameObject(levelMap.initObject, levelMap.objectCount);
 	levelMap.printMap();
-	GameController gameController;
 	while (gameController.gameState()) {
-		
-		if (GetAsyncKeyState(VK_UP)) {
-			player.goSomewhere(levelMap, 1);
-		}
-		if (GetAsyncKeyState(VK_DOWN)) {
-			player.goSomewhere(levelMap, 2);
-		}
-		if (GetAsyncKeyState(VK_LEFT)) {
-			player.goSomewhere(levelMap, 3);
-		}
-		if (GetAsyncKeyState(VK_RIGHT)) {
-			player.goSomewhere(levelMap, 4);
-		}
-		if (GetAsyncKeyState(VK_ESCAPE)) { exit(0); }
-		levelMap.cleanMap();
-		exitInGame.printExit();
-		for (int i = 0; i < coins_count; i++)
-		{
-			coins[i].printCoin();
-		}
-		gameController.checkCollisionWithEnemis(enemies, enemies_count, player);
-		for (int i = 0; i < enemies_count; i++)
-		{
-			enemies[i].move(levelMap);
-			enemies[i].printEnemy();
-		}
-		player.printPac();
-		gameController.checkCollisionWithCoins(coins, coins_count, player);
-		gameController.printScore();
-		gameController.checkCollisionWithExit(exitInGame, player);
-		gameController.checkCollisionWithEnemis(enemies, enemies_count, player);
-		exitInGame.checkCoins(coins_count, gameController.getScore());
-		if (!(gameController.gameState())) cleanScreen();
-		Sleep(250);
+		playerInput();
+		gameTick();
 	}
-	
 	printGameOver(gameController.getScore());
 	Sleep(2000);
 	return 0;

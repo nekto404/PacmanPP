@@ -1,3 +1,4 @@
+//Опис загальної логіки усії ігрових об'єктів
 #include "GameObject.h"
 
 GameObject::GameObject()

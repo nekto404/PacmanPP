@@ -1,3 +1,4 @@
+//Набір методів для ковертації даних
 #include "DataConvector.h"
 
 int const ASCII_DIFFERENCE = 48;
@@ -15,6 +16,8 @@ int charBuffToInt(char buff[])
 	return result;
 }
 
+//Приймає набір сиволів в вигляді масиву, довжину масиву, і масив для запису результату
+//TODO: Змінити масиви на посилання на масиви 
 void charBuffToArray(char buff[],int lenght, int res[])
 {
 	for (int i = 0; i < lenght; i++)

@@ -1,9 +1,9 @@
+
 #include <iostream>
 
 #include "GameObject.h"
 #include "Enemy.h"
 #include "PrintHelper.h"
-using namespace std;
 
 Enemy::Enemy() : GameObject::GameObject(){}
 Enemy::Enemy(int x, int y) : GameObject::GameObject(x, y) {}
@@ -11,11 +11,14 @@ void Enemy::printEnemy()
 {
 	setColor(0, 3);
 	placeCursor(cord_y * 3, cord_x * 2);
-	cout << "o o";
+	std::cout << "o o";
 	placeCursor(cord_y * 3, cord_x * 2 + 1);
-	cout << " 0 ";
+	std::cout << " 0 ";
 }
 
+//Метод кроку ворога. Приймає карту гри. 
+//Перевіряє чи на дані карті можна зробити крок в напрямку руху. 
+//Якщо можна то робить крок інакше змінює напрям.
 void Enemy::move(Map level)
 {
 	bool step = false;
@@ -51,6 +54,7 @@ void Enemy::move(Map level)
 	}
 }
 
+//Метод вибору нового напрямку руху
 void Enemy::choseDirection(Map level)
 {
 	direction = 1+rand() % (4);

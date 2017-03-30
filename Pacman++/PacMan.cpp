@@ -3,18 +3,19 @@
 #include "GameObject.h"
 #include "PacMan.h"
 #include "PrintHelper.h"
-using namespace std;
+
 
 PacMan::PacMan() : GameObject::GameObject(){}
 PacMan::PacMan(int x, int y): GameObject::GameObject(x,y){}
 void PacMan::printPac() {
 	setColor(4, 6);
 	placeCursor(cord_y * 3, cord_x * 2);
-	cout << "o o";
+	std::cout << "o o";
 	placeCursor(cord_y * 3, cord_x * 2 + 1);
-	cout << " ~ ";
+	std::cout << " ~ ";
 }
-
+//Метод який отримує карту і напрям руху. 
+//Переміщує об'єкт якщо це можливо
 void PacMan::goSomewhere(Map level , char direction) {
 	switch (direction)
 	{

@@ -1,9 +1,9 @@
+
 #include <iostream>
 
 #include "GameObject.h"
 #include "Exit.h"
 #include "PrintHelper.h"
-using namespace std;
 
 Exit::Exit() : GameObject::GameObject()
 {
@@ -24,19 +24,21 @@ void Exit::printExit()
 	if (closed)
 	{
 		placeCursor(cord_y * 3, cord_x * 2);
-		cout << "###";
+		std::cout << "###";
 		placeCursor(cord_y * 3, cord_x * 2 + 1);
-		cout << "###";
+		std::cout << "###";
 	}
 	else
 	{
 		placeCursor(cord_y * 3, cord_x * 2);
-		cout << "   ";
+		std::cout << "   ";
 		placeCursor(cord_y * 3, cord_x * 2 + 1);
-		cout << "   ";
+		std::cout << "   ";
 	}
 }
 
+// Перевіряє чи число монет дорівнює рахунку якщо це так то відкриває вихід
+// TODO: Змінити механізм перевірки
 void Exit::checkCoins(int coints_counter, int score)
 {
 	if (coints_counter == score)
