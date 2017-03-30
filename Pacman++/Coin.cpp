@@ -1,20 +1,22 @@
+//Класс для опису монет в грі
+
 #include <iostream>
 
 #include "GameObject.h"
 #include "Coin.h"
 #include "PrintHelper.h"
-using namespace std;
+
 
 Coin::Coin() : GameObject::GameObject() {}
 Coin::Coin(int x, int y) : GameObject::GameObject(x, y) {}
 void Coin::printCoin()
 {
-	if (exist)
+	if (exist) //перевірка чи монета ініціалізована правильно і досі в грі
 	{
 		setColor(6, 0);
 		placeCursor(cord_y * 3, cord_x * 2);
-		cout << " . ";
+		std::cout << " . ";
 		placeCursor(cord_y * 3, cord_x * 2 + 1);
-		cout << "   ";
+		std::cout << "   ";
 	}
 }

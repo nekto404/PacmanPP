@@ -1,21 +1,26 @@
+//Опис об'єкту карти гри
 #include <fstream>
 #include <iostream>
 #include <Windows.h>
+
 #include "map.h"
 #include "dataConvector.h"
 #include "PrintHelper.h"
-
-using namespace std;
 
 int const STRING_WITH_NUMBER_LENGHT = 20;
 
 Map::Map(){}
 
+//Метод зчитування карти.
+//Отримує назву файла карти і зчитує інформацію про карту з нього.
+//В файлі в першому рядку повино міститись ціле десяткове число,
+//яке відповідає за розмір карти, потім набір чисел який відповідаєть ігровим об'єктам:
+//1-перешкода, 2-гравець, 3-монета, 4-ворог, 9-вихід.
 void Map::readMap(char* levelName)
 	{
 		char buff[STRING_WITH_NUMBER_LENGHT];
 		int i = 0;
-		ifstream fin(levelName);
+		std::ifstream fin(levelName);
 		fin.getline(buff, STRING_WITH_NUMBER_LENGHT);
 		size = charBuffToInt(buff);
 		while (i < size)
@@ -27,7 +32,7 @@ void Map::readMap(char* levelName)
 		fin.close();
 	}
 
-
+//Запис інформації про ігрові об'єкти
 void Map::initMap()
 {
 	objectCount = 0;
@@ -52,13 +57,13 @@ void Map::printMap()
 			if (levelMap[i][j] == 1)
 			{
 				placeCursor(j*3, i*2);
-					cout << "   ";
+				std::cout << "   ";
 				placeCursor(j*3, i*2+1);
-					cout << "   ";
+				std::cout << "   ";
 			}
 		}
 }
-
+//Метод що заповнює робочу область чорним кольором (Тільки місця де немає перешкод).
 void Map::cleanMap()
 {
 	setColor(0, 0);
@@ -67,12 +72,12 @@ void Map::cleanMap()
 			if (levelMap[i][j] == 0)
 			{
 				placeCursor(j * 3, i * 2);
-				cout << "   ";
+				std::cout << "   ";
 				placeCursor(j * 3, i * 2 + 1);
-				cout << "   ";
+				std::cout << "   ";
 			}
 }
-
+//Метод що перевіряє чи немає перешкоди в блоці з координатами x,y
 bool Map::isEmptyBlock(int x, int y)
 {
 	bool result = false;
