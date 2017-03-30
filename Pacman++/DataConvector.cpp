@@ -1,10 +1,7 @@
-//Набір допоміжних методів для конвертації даних
-
 #include "DataConvector.h"
 
 int const ASCII_DIFFERENCE = 48;
 int const DECIMAL_CONST = 10;
-
 
 int charBuffToInt(char buff[])
 {

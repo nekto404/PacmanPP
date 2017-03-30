@@ -1,5 +1,3 @@
-//Опис загаліної логіки всіх ігрових об'єктів
-
 #include "GameObject.h"
 
 GameObject::GameObject()
